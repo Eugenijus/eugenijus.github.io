@@ -40,7 +40,7 @@ path {
 		height = 270 - margin.top - margin.bottom;
 	
 	// Parse the date / time
-	var parseDate = d3.time.format("%d/%m/%y").parse;
+	var parseDate = d3.time.format("%d/%m/%Y").parse;
 
 	// Set the ranges
 	var x = d3.time.scale().range([0, width]);
@@ -56,7 +56,7 @@ path {
 	// Define the line
 	var valueline = d3.svg.line()
 		.x(function(d) { return x(d.date); })
-		.y(function(d) { return y(d.Wakeup); });
+		.y(function(d) { return y(d.wakeup); });
 	
 	// Adds the svg canvas
 	var svg = d3.select("body")
@@ -79,13 +79,13 @@ path {
     d3.tsv("./data/sleep2.tsv", function(data) {
 		data.forEach(function(d) {
 			d.date = parseDate(d.date);
-			d.Wakeup = +d.Wakeup;
-			d.Asleep = +d.Asleep;
+			d.wakeup = +d.wakeup;
+			d.asleep = +d.asleep;
 		});
 		
 		// Scale the range of the data
 		x.domain(d3.extent(data, function(d) { return d.date; }));
-		y.domain([0, d3.max(data, function(d) { return d.Wakeup; })]);
+		y.domain([0, d3.max(data, function(d) { return d.wakeup; })]);
 
 		// Add the valueline path.
 		svg.append("path")
