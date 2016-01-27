@@ -90,7 +90,10 @@ path {
 		
 		// Scale the range of the data
 		x.domain(d3.extent(data, function(d) { return d.date; }));
-		y.domain([0, d3.max(data, function(d) { return (1 + Math.max(d.wakeup, d.asleep) ); }) ]);
+		y.domain([
+			d3.min(data, function(d) { return (Math.max(d.wakeup, d.asleep) - 1); }) , 
+			d3.max(data, function(d) { return (1 + Math.max(d.wakeup, d.asleep) ); }) 
+		]);
 
 		// Add the valueline path.
 		svg.append("path")
