@@ -56,7 +56,7 @@ path {
 	// Define the line
 	var valueline = d3.svg.line()
 		.x(function(d) { return x(d.date); })
-		.y(function(d) { return y(d.close); });
+		.y(function(d) { return y(d.Wakeup); });
 	
 	// Adds the svg canvas
 	var svg = d3.select("body")
@@ -78,13 +78,13 @@ path {
 	//Minor changes by Eugenijus
     d3.tsv("./data/sleep2.tsv", function(data) {
 		data.forEach(function(d) {
-			d.Date = parseDate(d.Date);
+			d.date = parseDate(d.date);
 			d.Wakeup = +d.Wakeup;
 			d.Asleep = +d.Asleep;
 		});
 		
 		// Scale the range of the data
-		x.domain(d3.extent(data, function(d) { return d.Date; }));
+		x.domain(d3.extent(data, function(d) { return d.date; }));
 		y.domain([0, d3.max(data, function(d) { return d.Wakeup; })]);
 
 		// Add the valueline path.
