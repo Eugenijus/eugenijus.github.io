@@ -75,25 +75,9 @@ path {
 			.attr("transform", 
 				  "translate(" + margin.left + "," + margin.top + ")");
 
-	
 	/** =================== ADDING A BOX =================== */
 	
-	var svg_actual = d3.select("body").select("svg");
-	
-	//From "D3.js by Example.pdf" page 68, code modified.
-	svg_actual.append('rect').attr({
-		width: totalWidth,
-		height: totalHeight,
-		fill: 'white',
-		stroke: 'black',
-		'stroke-width': 1
-	});
-	
-	var graphGroup = svg_actual
-		.append('g')
-		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ")");
-
-	graphGroup.append('rect').attr({
+	svg.append('rect').attr({
 		fill: 'rgba(0,0,0,0.1)',
 		width: totalWidth - (margin.left + margin.right),
 		height: totalHeight - (margin.bottom + margin.top)
