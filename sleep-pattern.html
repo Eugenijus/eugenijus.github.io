@@ -69,14 +69,19 @@ path {
 	// Adds the svg canvas
 	var svg = d3.select("body")
 		.append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
+			.attr("width", totalWidth)
+			.attr("height", totalHeight)
 		.append("g")
 			.attr("transform", 
 				  "translate(" + margin.left + "," + margin.top + ")");
+
 	
-	//From "D3.js by Example.pdf" page 68
-	svg.append('rect').attr({
+	/** =================== ADDING A BOX =================== */
+	
+	var svg_actual = d3.select("body").select("svg");
+	
+	//From "D3.js by Example.pdf" page 68, code modified.
+	svg_actual.append('rect').attr({
 		width: totalWidth,
 		height: totalHeight,
 		fill: 'white',
@@ -84,7 +89,7 @@ path {
 		'stroke-width': 1
 	});
 	
-	var graphGroup = svg
+	var graphGroup = svg_actual
 		.append('g')
 		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ")");
 
@@ -93,6 +98,8 @@ path {
 		width: totalWidth - (margin.left + margin.right),
 		height: totalHeight - (margin.bottom + margin.top)
 	});
+	
+	/** ==================================================== */
 	
     /**
 	var canvas = d3.select("#viz")
