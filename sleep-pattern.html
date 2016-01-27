@@ -77,7 +77,7 @@ path {
 	*/
 
 	//Minor changes by Eugenijus
-    d3.tsv("./data/sleep.tsv", function(data) {
+    d3.tsv("./data/sleep2.tsv", function(data) {
 		data.forEach(function(d) {
 			d.Date = parseDate(d.Date);
 			d.Wakeup = +d.Wakeup;
