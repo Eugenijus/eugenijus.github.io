@@ -34,10 +34,13 @@ path {
 	//FOLLOWING CODE IS FROM: http://bl.ocks.org/d3noob/b3ff6ae1c120eea654b5
 	
 	//Some changes by Eugenijus
+	var totalWidth = 800;
+	var totalHeight = 570;
+	
 	// Set the dimensions of the canvas / graph
 	var margin = {top: 30, right: 20, bottom: 30, left: 50},
-		width = 800 - margin.left - margin.right,
-		height = 570 - margin.top - margin.bottom;
+		width = totalWidth - margin.left - margin.right,
+		height = totalHeight - margin.top - margin.bottom;
 	
 	// Parse the date / time
 	var parseDate = d3.time.format("%d/%m/%Y").parse;
@@ -71,6 +74,25 @@ path {
 		.append("g")
 			.attr("transform", 
 				  "translate(" + margin.left + "," + margin.top + ")");
+	
+	//From "D3.js by Example.pdf" page 68
+	svg.append('rect').attr({
+		width: totalWidth,
+		height: totalHeight,
+		fill: 'white',
+		stroke: 'black',
+		'stroke-width': 1
+	});
+	
+	var graphGroup = svg
+		.append('g')
+		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ")");
+
+	graphGroup.append('rect').attr({
+		fill: 'rgba(0,0,0,0.1)',
+		width: totalWidth - (margin.left + margin.right),
+		height: totalHeight - (margin.bottom + margin.top)
+	});
 	
     /**
 	var canvas = d3.select("#viz")
