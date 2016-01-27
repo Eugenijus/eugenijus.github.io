@@ -18,7 +18,9 @@
         .attr("height", 400)
 		.style("fill", "gray");    
 
-    
+    d3.tsv("./data/sleep.tsv", function(data) {
+	  console.log(data[0]);
+	});
     </script>
 	
 </body>
